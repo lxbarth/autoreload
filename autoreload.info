@@ -1,0 +1,3 @@
+name = Auto reload
+description = "Automatically reload a page when a feed refreshes."
+core = "6.x"

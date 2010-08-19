@@ -1,0 +1,20 @@
+<?php
+
+define('AUTORELOAD_FILE', 'changed');
+
+/**
+ * Implementation of hook_init().
+ */
+function autoreload_init() {
+  drupal_add_js(drupal_get_path('module', 'autoreload') .'/autoreload.js');
+}
+
+/**
+ * Implementation of function hook_feeds_after_import().
+ */
+function autoreload_feeds_after_import(FeedsImporter $importer, FeedsSource $source) {
+  $file = file_create_filename(AUTORELOAD_FILE, realpath(file_directory_path()));
+  $h = fopen($file, 'w');
+  fwrite($h, FEEDS_REQUEST_TIME);
+  fclose($h);
+}
