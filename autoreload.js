@@ -8,6 +8,15 @@ Drupal.autoreload_start = function() {
 }
 
 Drupal.autoreload_callback = function(data) {
-  console.log(data);
-  setTimeout(Drupal.autoreload_start, 500)
+      console.log(data);
+  if (!Drupal.autoreload_callback.last_data) {
+    Drupal.autoreload_callback.last_data = data;
+  }
+  else {
+    if (Drupal.autoreload_callback.last_data != data) {
+      location.reload();
+      console.log('reload!');
+    }
+  }
+  setTimeout(Drupal.autoreload_start, 1000);
 }
