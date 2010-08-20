@@ -20,5 +20,5 @@ Drupal.autoreload_callback = function(data) {
       location.reload();
     }
   }
-  setTimeout(Drupal.autoreload_start, 1000);
+  setTimeout(Drupal.autoreload_start, 500);
 }
